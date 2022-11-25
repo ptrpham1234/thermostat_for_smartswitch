@@ -115,15 +115,15 @@ public class Thermostat {
 
         switch (args[0]) {
             case "getTemp" ->
-                    processBuilder.command("python", "D:\\Codes\\Java\\Projects\\Thermostat\\src\\main\\java\\com\\thermostat\\SensorController.py", "getTemp", args[1]);
+                    processBuilder.command("python", "SensorController.py", "getTemp", args[1]);
             case "getHumidity" ->
-                    processBuilder.command("python", "D:\\Codes\\Java\\Projects\\Thermostat\\src\\main\\java\\com\\thermostat\\SensorController.py", "getHumidity");
+                    processBuilder.command("python", "SensorController.py", "getHumidity");
             case "turnOn" ->
-                    processBuilder.command("python", "D:\\Codes\\Java\\Projects\\Thermostat\\src\\main\\java\\com\\thermostat\\PlugController.py", "turnOn");
+                    processBuilder.command("python", "PlugController.py", "turnOn");
             case "turnOff" ->
-                    processBuilder.command("python", "D:\\Codes\\Java\\Projects\\Thermostat\\src\\main\\java\\com\\thermostat\\PlugController.py", "turnOff");
+                    processBuilder.command("python", "PlugController.py", "turnOff");
             case "testCom" ->
-                    processBuilder.command("python", "D:\\Codes\\Java\\Projects\\Thermostat\\src\\main\\java\\com\\thermostat\\PlugController.py", "testCom");
+                    processBuilder.command("python", "PlugController.py", "testCom");
         }
 
         Process process = processBuilder.start();
