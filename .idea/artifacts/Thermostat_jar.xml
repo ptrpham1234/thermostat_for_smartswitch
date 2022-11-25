@@ -2,26 +2,19 @@
   <artifact type="jar" name="Thermostat:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Thermostat_jar</output-path>
     <root id="archive" name="Thermostat.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="Thermostat" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18.0.1/javafx-fxml-18.0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18.0.1/javafx-base-18.0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18.0.1/javafx-controls-18.0.1-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18.0.1/javafx-graphics-18.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18.0.1/javafx-fxml-18.0.1-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18.0.1/javafx-base-18.0.1-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/python/jython/2.7.2/jython-2.7.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18.0.1/javafx-graphics-18.0.1-win.jar" path-in-jar="/" />
-      <element id="library" level="application" name="Python 3.10 (3.10) interpreter library" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18.0.1/javafx-controls-18.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18.0.1/javafx-base-18.0.1-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18.0.1/javafx-controls-18.0.1.jar" path-in-jar="/" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx-swt.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.base.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.controls.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.fxml.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.graphics.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.media.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.properties" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.swing.jar" />
-      <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/lib/javafx.web.jar" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18.0.1/javafx-base-18.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18.0.1/javafx-graphics-18.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18.0.1/javafx-fxml-18.0.1.jar" path-in-jar="/" />
       <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/bin/api-ms-win-core-console-l1-1-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/bin/api-ms-win-core-console-l1-2-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/../../javafx-sdk-19/bin/api-ms-win-core-datetime-l1-1-0.dll" />

@@ -28,12 +28,16 @@ public class ThermostatMainController implements Initializable {
     private Button buttonDecr;
     @FXML
     private Button buttonSchedule;
+    @FXML
+    private Button buttonPower;
 
     private static final Thermostat thermostat = new Thermostat();
     private ThermostatMainController controller;
     private Timer tempTimer;
     private Timer humTimer;
+    private Timer heaterController;
     private Stage stage;
+    private boolean power = true;
 
 
     @Override
@@ -41,8 +45,15 @@ public class ThermostatMainController implements Initializable {
 
         this.tempTimer = new Timer();
         this.humTimer = new Timer();
-        tempTimer.scheduleAtFixedRate(new TempUpdateThread(), 0, 10 * 1000);
+        this.heaterController = new Timer();
+        try {
+            thermostat.setHeaterOn(true);
+        } catch (DeviceNotFound e) {
+            throw new RuntimeException(e);
+        }
+        tempTimer.scheduleAtFixedRate(new TempUpdateThread(), 0, 1 * 1000);
         humTimer.scheduleAtFixedRate(new HumUpdateThread(), 0 , 500 * 1000);
+        humTimer.scheduleAtFixedRate(new HeaterControllerThread(), 0, 1 * 1000);
     }
 
     public void testCom() {
@@ -93,6 +104,31 @@ public class ThermostatMainController implements Initializable {
         labelSetTemp.setText(Integer.toString(currSetTemp));
     }
 
+    /*****************************************************************************************************************
+     * Functions:           onSetSelect
+     * Author:              Peter Pham
+     * Date Started:        11/19/2022
+     * Description:
+     * Decide whether to turn the heater on
+     * Parameters:
+     *      e         ActionEvent      Specified the details of the
+     *     pSet         ProgrammedSettings      specifies the schedule
+     *****************************************************************************************************************/
+    @FXML
+    public void onPowerClick() throws DeviceNotFound {
+        if (!power) {
+            thermostat.setHeaterOn(true);
+            tempTimer.scheduleAtFixedRate(new TempUpdateThread(), 0, 1 * 1000);
+            humTimer.scheduleAtFixedRate(new HumUpdateThread(), 0 , 500 * 1000);
+            humTimer.scheduleAtFixedRate(new HeaterControllerThread(), 0, 1 * 1000);
+            power = !power;
+        }
+        else {
+            thermostat.setHeaterOn(false);
+            clean();
+        }
+    }
+
 
     /*****************************************************************************************************************
      * Functions:           onSetSelect
@@ -109,6 +145,8 @@ public class ThermostatMainController implements Initializable {
         tempTimer.purge();
         humTimer.cancel();
         humTimer.purge();
+        heaterController.cancel();
+        heaterController.purge();
     }
 
     /*****************************************************************************************************************
@@ -185,7 +223,7 @@ public class ThermostatMainController implements Initializable {
             // once the temperature reaches the desired temp, wait 30 seconds and then stop the heater
             else if (temp == setTemp) {
                 try {
-                    Thread.sleep(30 * 1000);
+                    Thread.sleep(20 * 1000); // sleep for a bit before turning off to make sure that it's the right temp
                     thermostat.setHeaterOn(false);
                 } catch (InterruptedException e) {
                     try {
@@ -198,6 +236,14 @@ public class ThermostatMainController implements Initializable {
                     throw new RuntimeException(e);
                 }
             }
+            else {
+                try {
+                    thermostat.setHeaterOn(false);
+                } catch (DeviceNotFound e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
 
         }
     }
